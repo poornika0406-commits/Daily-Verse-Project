@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Blogg | Blogs</title>
+
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+            <h2>Digital Blogg</h2>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+
+            <li>
+                <a href="create.html">Write Blog</a>
+            </li>
+
+            <li>
+                <a href="blogs.html" class="active">Blogs</a>
+            </li>
+
+            <li>
+                <a href="login.html">Login</a>
+            </li>
+
+        </ul>
+
+        <button id="themeBtn">
+            🌙
+        </button>
+
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <header class="hero">
+
+        <h1>Explore Blogs</h1>
+
+        <p>
+            Read articles from different categories and discover new ideas.
+        </p>
+
+    </header>
+
+    <!-- ================= SEARCH & FILTER ================= -->
+
+    <section class="controls">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Search blogs..."
+            onkeyup="loadBlogs()"
+        >
+
+        <select id="categoryFilter" onchange="loadBlogs()">
+
+            <option value="">All Categories</option>
+
+            <option value="Technology">Technology</option>
+
+            <option value="Programming">Programming</option>
+
+            <option value="Travel">Travel</option>
+
+            <option value="Personal">Personal</option>
+
+            <option value="Career">Career</option>
+
+        </select>
+
+    </section>
+
+    <!-- ================= BLOG COUNT ================= -->
+
+    <div class="blog-count">
+
+        <h3 id="totalBlogs">
+            Total Blogs : 0
+        </h3>
+
+    </div>
+
+    <!-- ================= BLOGS ================= -->
+
+    <section
+        class="blogs"
+        id="blogsContainer"
+    >
+
+    </section>
+
+    <!-- ================= TOAST ================= -->
+
+    <div id="toast"></div>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Digital Blogg | Built with HTML, CSS, JavaScript, Node.js, Express & MongoDB
+        </p>
+
+    </footer>
+
+    <script src="blog.js"></script>
+
+</body>
+</html>

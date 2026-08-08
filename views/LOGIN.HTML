@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+
+/* 🌈 Animated Background */
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff7eb3, #00c6ff);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* 🧊 Glass Card */
+.form-container {
+  background: rgba(255,255,255,0.15);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  width: 300px;
+  text-align: center;
+  color: white;
+}
+
+/* 🔥 Title */
+h2 {
+  margin-bottom: 20px;
+}
+
+/* ✏️ Input Wrapper */
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* Floating Label */
+.input-box label {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: gray;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.input-box input:focus + label,
+.input-box input:valid + label {
+  top: -10px;
+  font-size: 12px;
+  color: #fff;
+}
+
+/* 👁 Password Toggle */
+.toggle {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+/* 🚀 Button */
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #ff7eb3;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff4f91;
+  transform: scale(1.05);
+}
+
+/* 📱 Responsive */
+@media (max-width: 400px) {
+  .form-container {
+    width: 90%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="form-container">
+  <h2>🔐 Login</h2>
+
+  <form onsubmit="login(event)">
+
+    <div class="input-box">
+      <input type="email" id="email" required>
+      <label>Email</label>
+    </div>
+
+    <div class="input-box">
+      <input type="password" id="password" required>
+      <label>Password</label>
+      <span class="toggle" onclick="togglePassword()">👁</span>
+    </div>
+
+    <button type="submit">Login</button>
+
+  </form>
+</div>
+
+<script>
+const API = "http://localhost:5000";
+
+// 👁 Toggle password
+function togglePassword() {
+  const pass = document.getElementById("password");
+  pass.type = pass.type === "password" ? "text" : "password";
+}
+
+// 🔐 Login Function
+async function login(e) {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  try {
+    const res = await fetch(`${API}/api/auth/login`, {  // ✅ FIXED URL
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+    console.log("Response:", data); // 🔍 debug
+
+    if (res.ok && data.token) {
+      // ✅ store token
+      localStorage.setItem("token", data.token);
+
+      alert("Login successful ✅");
+
+      // redirect
+      window.location.href = "create.html";
+    } else {
+      alert(data.message || "Login failed ❌");
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Server error ❌");
+  }
+}
+</script>
+
+</body>
+</html>

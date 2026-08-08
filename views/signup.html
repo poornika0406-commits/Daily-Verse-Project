@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup</title>
+
+<style>
+
+/* 🌈 Animated Background */
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #ff7eb3, #6a11cb, #2575fc, #00c6ff);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* 🧊 Glass Card */
+.form-container {
+  background: rgba(255,255,255,0.15);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  width: 320px;
+  text-align: center;
+  color: white;
+}
+
+/* 🔥 Title */
+h2 {
+  margin-bottom: 20px;
+}
+
+/* ✏️ Input Wrapper */
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* Floating Label */
+.input-box label {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: gray;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.input-box input:focus + label,
+.input-box input:valid + label {
+  top: -10px;
+  font-size: 12px;
+  color: #fff;
+}
+
+/* 👁 Toggle */
+.toggle {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+/* 🚀 Button */
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #00c6ff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #0072ff;
+  transform: scale(1.05);
+}
+
+/* 🔗 Link */
+p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* 📱 Responsive */
+@media (max-width: 400px) {
+  .form-container {
+    width: 90%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="form-container">
+  <h2>🚀 Signup</h2>
+
+  <form onsubmit="signup(event)">
+
+    <div class="input-box">
+      <input type="email" id="email" required>
+      <label>Email</label>
+    </div>
+
+    <div class="input-box">
+      <input type="password" id="password" required>
+      <label>Password</label>
+      <span class="toggle" onclick="togglePassword('password')">👁</span>
+    </div>
+
+    <div class="input-box">
+      <input type="password" id="confirmPassword" required>
+      <label>Confirm Password</label>
+      <span class="toggle" onclick="togglePassword('confirmPassword')">👁</span>
+    </div>
+
+    <button type="submit">Signup</button>
+
+    <p>Already have an account? <a href="login.html">Login</a></p>
+
+  </form>
+</div>
+
+<<script>
+const API = "http://localhost:5000";
+
+// 👁 Toggle password
+function togglePassword(id) {
+  const field = document.getElementById(id);
+  field.type = field.type === "password" ? "text" : "password";
+}
+
+// 🚀 Signup Function
+async function signup(e) {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const confirm = document.getElementById("confirmPassword").value.trim();
+
+  if (password !== confirm) {
+    alert("Passwords do not match ❌");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/api/auth/signup`, {  // ✅ FIXED URL
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+    console.log("Signup response:", data); // 🔍 debug
+
+    if (res.ok) {
+      alert("Signup successful ✅");
+      window.location.href = "login.html";
+    } else {
+      alert(data.message || "Signup failed ❌");
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Server error ❌");
+  }
+}
+</script>
+</body>
+</html>

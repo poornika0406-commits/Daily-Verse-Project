@@ -1,0 +1,555 @@
+/* =======================
+   GOOGLE FONT
+======================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* =======================
+   BODY
+======================= */
+
+body{
+    background:#f5f7fb;
+    color:#222;
+}
+html{
+    scroll-behavior:smooth;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+/* =======================
+   NAVBAR
+======================= */
+
+nav{
+    width:100%;
+    background:#4f46e5;
+    color:white;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo h2{
+    font-size:28px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#ffd54f;
+}
+
+.active{
+    color:#ffd54f;
+}
+
+#themeBtn{
+    padding:8px 14px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* =======================
+   HERO
+======================= */
+
+.hero{
+    text-align:center;
+    padding:60px 20px;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:white;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+/* =======================
+   SEARCH & FILTER
+======================= */
+.controls{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:35px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.controls input{
+
+    flex:1;
+
+    min-width:260px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+.controls select{
+
+    min-width:220px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+/* =======================
+   BLOG COUNT
+======================= */
+
+.blog-count{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    margin-bottom:20px;
+}
+
+.blog-count h3{
+    color:#555;
+}
+
+/* =======================
+   BLOG GRID
+======================= */
+
+.blogs{
+    width:90%;
+    max-width:1200px;
+    margin:30px auto 60px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+}
+
+/* =======================
+   BLOG CARD
+======================= */
+
+.blog-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:22px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    word-wrap:break-word;
+
+}
+.blog-card:hover{
+    transform:translateY(-8px);
+}
+
+.blog-card h2{
+    color:#4f46e5;
+    margin-bottom:10px;
+}
+
+.blog-card p{
+    color:#555;
+    line-height:1.6;
+    margin:12px 0;
+}
+
+/* =======================
+   CATEGORY
+======================= */
+
+.category{
+    display:inline-block;
+    background:#4f46e5;
+    color:white;
+    padding:6px 14px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+/* =======================
+   AUTHOR
+======================= */
+
+.author{
+    margin-top:10px;
+    color:#666;
+    font-size:14px;
+}
+
+/* =======================
+   DATE
+======================= */
+
+.date{
+    font-size:13px;
+    color:#999;
+    margin-top:8px;
+}
+
+/* =======================
+   BUTTONS
+======================= */
+
+.buttons{
+
+    margin-top:20px;
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.buttons button{
+
+    flex:1;
+
+    min-width:120px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+.read-btn{
+    background:#2563eb;
+}
+
+.delete-btn{
+    background:#ef4444;
+}
+
+.buttons button:hover{
+    opacity:.9;
+}
+
+/* =======================
+   TOAST
+======================= */
+
+#toast{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    background:#333;
+    color:white;
+    padding:14px 22px;
+    border-radius:8px;
+    display:none;
+}
+
+/* =======================
+   FOOTER
+======================= */
+
+footer{
+    text-align:center;
+    background:#222;
+    color:white;
+    padding:20px;
+}
+
+/* =======================
+   DARK MODE
+======================= */
+
+body.dark{
+    background:#121212;
+    color:white;
+}
+
+body.dark nav{
+    background:#1d1d1d;
+}
+
+body.dark .hero{
+    background:#202020;
+}
+
+body.dark .blog-card{
+    background:#1f1f1f;
+    color:white;
+}
+
+body.dark .blog-card p,
+body.dark .author,
+body.dark .date,
+body.dark .blog-count h3{
+    color:#ddd;
+}
+
+body.dark input,
+body.dark select{
+    background:#2c2c2c;
+    color:white;
+}
+
+body.dark footer{
+    background:black;
+}
+
+
+
+
+/* ===========================
+        TABLET
+=========================== */
+
+@media screen and (max-width:768px){
+
+nav{
+
+    flex-direction:column;
+
+    gap:15px;
+
+    text-align:center;
+
+}
+
+nav ul{
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+.hero{
+
+    padding:50px 20px;
+
+}
+
+.hero h1{
+
+    font-size:34px;
+
+}
+
+.hero p{
+
+    font-size:16px;
+
+}
+
+.controls{
+
+    flex-direction:column;
+
+}
+
+.controls input,
+
+.controls select{
+
+    width:100%;
+
+}
+
+.blogs{
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+}
+
+.buttons{
+
+    flex-direction:column;
+
+}
+
+.buttons button{
+
+    width:100%;
+
+}
+
+}
+
+
+/* ===========================
+        MOBILE
+=========================== */
+
+@media screen and (max-width:480px){
+
+nav{
+
+    padding:15px;
+
+}
+
+.logo h2{
+
+    font-size:24px;
+
+}
+
+.hero{
+
+    padding:40px 15px;
+
+}
+
+.hero h1{
+
+    font-size:28px;
+
+}
+
+.hero p{
+
+    font-size:15px;
+
+}
+
+.blog-card{
+
+    padding:18px;
+
+}
+
+.blog-card h2{
+
+    font-size:22px;
+
+}
+
+.blog-card p{
+
+    font-size:15px;
+
+}
+
+.category{
+
+    font-size:12px;
+
+}
+
+.blog-count h3{
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+#themeBtn{
+
+    width:45px;
+
+    height:45px;
+
+}
+
+#toast{
+
+    left:15px;
+
+    right:15px;
+
+    bottom:20px;
+
+    text-align:center;
+
+}
+
+footer{
+
+    font-size:14px;
+
+    padding:15px;
+
+}
+
+}
