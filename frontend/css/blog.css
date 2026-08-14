@@ -34,7 +34,7 @@ img{
 
 nav{
     width:100%;
-    background:#4f46e5;
+    background:#43260e;
     color:white;
     padding:18px 8%;
     display:flex;
@@ -85,7 +85,7 @@ nav ul li a:hover{
 .hero{
     text-align:center;
     padding:60px 20px;
-    background:linear-gradient(135deg,#667eea,#764ba2);
+    background:linear-gradient(135deg,#64470c,#79663c);
     color:white;
 }
 
@@ -217,7 +217,7 @@ nav ul li a:hover{
 }
 
 .blog-card h2{
-    color:#4f46e5;
+    color:#581f0a;
     margin-bottom:10px;
 }
 
@@ -233,7 +233,7 @@ nav ul li a:hover{
 
 .category{
     display:inline-block;
-    background:#4f46e5;
+    background:#5e2c06;
     color:white;
     padding:6px 14px;
     border-radius:30px;
@@ -298,11 +298,11 @@ nav ul li a:hover{
 }
 
 .read-btn{
-    background:#2563eb;
+    background:#3068df;
 }
 
 .delete-btn{
-    background:#ef4444;
+    background:#494646;
 }
 
 .buttons button:hover{

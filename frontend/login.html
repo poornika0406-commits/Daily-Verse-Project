@@ -7,7 +7,6 @@
 
 <style>
 
-/* 🌈 Animated Background */
 body {
   margin: 0;
   height: 100vh;
@@ -106,12 +105,109 @@ button:hover {
     width: 90%;
   }
 }
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 50px;
+    box-sizing: border-box;
+
+    background: rgba(1, 1, 21, 0.95);
+
+    z-index: 1000;
+}
+
+/* LOGO */
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    font-family: "Poppins", sans-serif;
+}
+
+/* NAVIGATION */
+
+.nav-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* EACH BOX */
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 22px;
+
+    min-width: 80px;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    transition: all 0.3s ease;
+}
+
+/* HOVER */
+
+.nav-links a:hover {
+    background: white;
+    color: #b7b5e3;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ACTIVE PAGE */
+
+.nav-links a.active {
+    background: #2abade;
+    border-color: #95d7e6;
+    color: rgb(243, 237, 237);
+}
 </style>
 </head>
 
 <body>
+<nav class="navbar">
+    <div class="logo">
+        Daily Verse Blog
+    </div>
 
+   <div class="nav-links">
+
+    <a href="home.html">Home</a>
+
+    <a href="create.html">Write</a>
+
+    <a href="store.html">Blog Store</a>
+
+    <a href="signup.html">Sign Up</a>
+
+    <a href="login.html" class="active">Login</a>
+
+</div>
+</nav>
 <div class="form-container">
   <h2>🔐 Login</h2>
 
@@ -132,6 +228,9 @@ button:hover {
 
   </form>
 </div>
+
+
+
 
 <script>
 const API = "http://localhost:5000";
