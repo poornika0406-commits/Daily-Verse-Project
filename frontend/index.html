@@ -2,220 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Blog</title>
-
-<style>
-/* 🌈 Background */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: white;
-}
-
-/* 🧊 Container */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* 🔥 Title */
-h1 {
-  text-align: center;
-  font-size: 2.5rem;
-}
-
-/* 🧊 Glass Card */
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-/* ✏️ Inputs */
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-}
-
-/* 🚀 Buttons */
-button {
-  margin-top: 10px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 10px;
-  background: #ff7eb3;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #ff4f91;
-  transform: scale(1.05);
-}
-
-/* 📦 Blog Cards */
-.blog {
-  background: rgba(255,255,255,0.15);
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 12px;
-  transition: 0.3s;
-}
-
-.blog:hover {
-  transform: translateY(-5px);
-}
-
-/* 📱 Responsive */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-}
-</style>
+<title>Daily Verse Blog</title>
+<link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
 
-<div class="container">
-
-  <h1>Digital Blog</h1>
-
-  <!-- CREATE BLOG -->
-  <div class="card">
-    <h2>Create Blog</h2>
-
-    <input id="title" placeholder="Title">
-    <textarea id="content" placeholder="Content"></textarea>
-    <input id="author" placeholder="Author ID">
-
-    <button onclick="createBlog()">Submit</button>
-  </div>
-
-  <!-- LOGIN -->
-  <div class="card">
-    <h2>Login</h2>
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-  </div>
-
-  <!-- BLOG LIST -->
-  <div class="card">
-    <h2>All Blogs</h2>
-    <div id="blogs"></div>
-  </div>
-
+<!-- NAVBAR -->
+<nav>
+    <h2>Daily Verse Blog</h2>
+<div class="nav-links"> 
+    <a href="create.html">Write</a> 
+    <a href="blogs.html">Blog Store</a> 
+    <a href="signup.html">Sign Up</a>
+    <a href="login.html">Login</a>
 </div>
+</nav>
 
-<script>
-const API = "http://localhost:5000";
-let editingId = null;
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
 
-// CREATE / UPDATE BLOG
-async function createBlog() {
-  const title = document.getElementById("title").value;
-  const content = document.getElementById("content").value;
-  const author = document.getElementById("author").value;
+        <h1>DAILY VERSE BLOG</h1>
 
-  if (!title || !content || !author) {
-    alert("Fill all fields ❌");
-    return;
-  }
+        <p>Share your Ideas with the Blogging</p>
 
-  if (editingId) {
-    await fetch(`${API}/blogs/${editingId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, content })
-    });
-    editingId = null;
-    alert("Updated ✏️");
-  } else {
-    await fetch(`${API}/blogs`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, content, author })
-    });
-    alert("Created ✅");
-  }
+        <a href="create.html" class="hero-btn">Start Writing</a>
 
-  document.getElementById("title").value = "";
-  document.getElementById("content").value = "";
-  document.getElementById("author").value = "";
+    </div>
+</section>
+<!-- BLOGS -->
+<section class="blogs"></section>
 
-  loadBlogs();
-}
+<div id="toast"></div>
 
-// LOAD BLOGS
-async function loadBlogs() {
-  const res = await fetch(`${API}/blogs`);
-  const data = await res.json();
-
-  const blogDiv = document.getElementById("blogs");
-  blogDiv.innerHTML = "";
-
-  if (data.length === 0) {
-    blogDiv.innerHTML = "<p>No blogs yet</p>";
-    return;
-  }
-
-  data.forEach(blog => {
-    blogDiv.innerHTML += `
-      <div class="blog">
-        <h3>${blog.title}</h3>
-        <p>${blog.content}</p>
-        <small>👤 ${blog.author?.email || "Unknown"}</small>
-        <br><br>
-        <button onclick="deleteBlog('${blog._id}')">Delete</button>
-        <button onclick="editBlog('${blog._id}', \`${blog.title}\`, \`${blog.content}\`)">Edit</button>
-      </div>
-    `;
-  });
-}
-
-// DELETE
-async function deleteBlog(id) {
-  await fetch(`${API}/blogs/${id}`, { method: "DELETE" });
-  loadBlogs();
-}
-
-// EDIT
-function editBlog(id, title, content) {
-  document.getElementById("title").value = title;
-  document.getElementById("content").value = content;
-  editingId = id;
-}
-
-// LOGIN (basic)
-async function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  const res = await fetch(`${API}/login`, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ email, password })
-  });
-
-  const data = await res.json();
-  alert(data.message || "Logged in");
-}
-
-// INIT
-loadBlogs();
-</script>
+<script src="home.js"></script>
 
 </body>
 </html>
