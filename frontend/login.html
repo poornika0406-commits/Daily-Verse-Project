@@ -7,110 +7,66 @@
 
 <style>
 
+
+/* =========================
+   BODY
+========================= */
+
 body {
-  margin: 0;
-  height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff7eb3, #00c6ff);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: linear-gradient(
+        -45deg,
+        #6a11cb,
+        #2575fc,
+        #ff7eb3,
+        #00c6ff
+    );
+
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
+/* =========================
+   BACKGROUND ANIMATION
+========================= */
 
 @keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
 }
 
-/* 🧊 Glass Card */
-.form-container {
-  background: rgba(255,255,255,0.15);
-  padding: 30px;
-  border-radius: 15px;
-  backdrop-filter: blur(15px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  width: 300px;
-  text-align: center;
-  color: white;
-}
 
-/* 🔥 Title */
-h2 {
-  margin-bottom: 20px;
-}
+/* =========================
+   NAVBAR
+========================= */
 
-/* ✏️ Input Wrapper */
-.input-box {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.input-box input {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-}
-
-/* Floating Label */
-.input-box label {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  color: gray;
-  transition: 0.3s;
-  pointer-events: none;
-}
-
-.input-box input:focus + label,
-.input-box input:valid + label {
-  top: -10px;
-  font-size: 12px;
-  color: #fff;
-}
-
-/* 👁 Password Toggle */
-.toggle {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  cursor: pointer;
-}
-
-/* 🚀 Button */
-button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  background: #ff7eb3;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #ff4f91;
-  transform: scale(1.05);
-}
-
-/* 📱 Responsive */
-@media (max-width: 400px) {
-  .form-container {
-    width: 90%;
-  }
-}
 .navbar {
+
     position: absolute;
+
     top: 0;
     left: 0;
-    width: 100%;
 
+    width: 100%;
     height: 80px;
 
     display: flex;
@@ -118,6 +74,7 @@ button:hover {
     justify-content: space-between;
 
     padding: 0 50px;
+
     box-sizing: border-box;
 
     background: rgba(1, 1, 21, 0.95);
@@ -125,28 +82,47 @@ button:hover {
     z-index: 1000;
 }
 
-/* LOGO */
+
+/* =========================
+   LOGO
+========================= */
 
 .logo {
+
     color: white;
+
     font-size: 25px;
+
     font-weight: 800;
+
     font-family: "Poppins", sans-serif;
 }
 
-/* NAVIGATION */
+
+/* =========================
+   NAVIGATION
+========================= */
 
 .nav-links {
+
     display: flex;
+
     gap: 12px;
+
     align-items: center;
 }
 
-/* EACH BOX */
+
+/* =========================
+   NAVIGATION BOXES
+========================= */
 
 .nav-links a {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     padding: 12px 22px;
@@ -154,12 +130,15 @@ button:hover {
     min-width: 80px;
 
     color: white;
+
     text-decoration: none;
 
     font-size: 16px;
+
     font-weight: 600;
 
     border: 1px solid rgba(255, 255, 255, 0.35);
+
     border-radius: 8px;
 
     background: rgba(255, 255, 255, 0.08);
@@ -167,24 +146,300 @@ button:hover {
     transition: all 0.3s ease;
 }
 
-/* HOVER */
+
+/* =========================
+   NAVIGATION HOVER
+========================= */
 
 .nav-links a:hover {
+
     background: white;
-    color: #b7b5e3;
+
+    color: #2575fc;
 
     transform: translateY(-2px);
 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* ACTIVE PAGE */
+
+/* =========================
+   ACTIVE PAGE
+========================= */
 
 .nav-links a.active {
+
     background: #2abade;
+
     border-color: #95d7e6;
-    color: rgb(243, 237, 237);
+
+    color: white;
 }
+
+
+/* =========================
+   LOGIN CARD
+========================= */
+
+.form-container {
+
+    background: rgba(255, 255, 255, 0.15);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+    width: 390px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    color: white;
+
+    margin-top: 80px;
+}
+
+
+/* =========================
+   LOGIN TITLE
+========================= */
+
+.form-container h2 {
+
+    margin: 0 0 25px 0;
+
+    font-size: 30px;
+
+    color: white;
+}
+
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
+
+    text-align: left;
+
+    margin-bottom: 22px;
+
+    width: 100%;
+}
+
+
+/* =========================
+   LABEL
+========================= */
+
+.form-group label {
+
+    display: block;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 7px;
+
+    padding-left: 2px;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.form-group input {
+
+    width: 100%;
+
+    height: 46px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    border: none;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: white;
+
+    color: #333;
+
+    font-size: 17px;
+
+    transition: 0.3s;
+}
+
+
+/* =========================
+   PLACEHOLDER
+========================= */
+
+.form-group input::placeholder {
+
+    color: #888;
+
+    opacity: 1;
+}
+
+
+/* =========================
+   INPUT FOCUS
+========================= */
+
+.form-group input:focus {
+
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.35);
+
+    background: #ffffff;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+button {
+
+    width: 100%;
+
+    height: 48px;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #ff7eb3;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    margin-top: 3px;
+}
+
+
+/* =========================
+   BUTTON HOVER
+========================= */
+
+button:hover {
+
+    background: #ff4f91;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+
+        padding: 0 20px;
+    }
+
+    .logo {
+
+        font-size: 20px;
+    }
+
+    .nav-links {
+
+        gap: 5px;
+    }
+
+    .nav-links a {
+
+        min-width: auto;
+
+        padding: 10px 12px;
+
+        font-size: 14px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 10px 15px;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .nav-links {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .form-container {
+
+        width: 90%;
+
+        max-width: 390px;
+
+        margin-top: 100px;
+
+        padding: 25px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .form-container {
+
+        width: 92%;
+
+        padding: 22px;
+    }
+
+    .form-container h2 {
+
+        font-size: 26px;
+    }
+
+}
+
+
 </style>
 </head>
 
@@ -212,17 +467,15 @@ button:hover {
   <h2>🔐 Login</h2>
 
   <form onsubmit="login(event)">
+<div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email">
+</div>
 
-    <div class="input-box">
-      <input type="email" id="email" required>
-      <label>Email</label>
-    </div>
-
-    <div class="input-box">
-      <input type="password" id="password" required>
-      <label>Password</label>
-      <span class="toggle" onclick="togglePassword()">👁</span>
-    </div>
+<div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Password">
+</div>
 
     <button type="submit">Login</button>
 
